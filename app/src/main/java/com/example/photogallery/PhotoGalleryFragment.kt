@@ -178,8 +178,6 @@ class PhotoGalleryFragment : VisibleFragment() {
         return view
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         photoGalleryViewModel.galleryItemLiveData.observe(viewLifecycleOwner, Observer {galleryItems -> Log.d(
@@ -217,6 +215,8 @@ class PhotoGalleryFragment : VisibleFragment() {
     private inner class PhotoAdapter(private val galleryItems: List<GalleryItem>) : RecyclerView.Adapter<PhotoHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
             val view = layoutInflater.inflate(R.layout.list_item_gallery, parent, false) as ImageView
+            //在 LayoutInflater.inflate() 方法中，第三个参数表示是否将生成的 View 添加到 ViewGroup 中。如果是在 RecyclerView.Adapter 的 onCreateViewHolder() 方法中使用，
+            // 一般都是设置为 false，因为在 RecyclerView 的布局过程中会自动将 View 添加到 RecyclerView 中。如果设为 true，则需要手动添加 View 到父布局中。
             return PhotoHolder(view)
         }
 

@@ -1,6 +1,5 @@
 package com.example.photogallery.api
 
-import com.example.photogallery.FlickrResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -24,6 +23,9 @@ interface FlickrApi {
     )
     fun fetchPhotos(): Call<FlickrResponse>
 
+    /**
+     * 这里无参数的@Get注解和fetchUrlBytes(...)函数中的@Url注解搭配起来，会让Retrofit覆盖基URL
+     */
     @GET
     fun fetchUrlBytes(@Url url: String): Call<ResponseBody>
 
